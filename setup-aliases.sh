@@ -507,8 +507,10 @@ CCGRAMRST
     echo "[aliases] Comandos criados: start-arch, start-arch-cli, start-kde, stop-arch, uninstall-arch, apply-configs, vps-* (14: shell/tmux/claude/cc-or/pi/pi-coder/herdr/deploy/logs), ccgram-restart"
 }
 
-# Execução direta: `bash setup-aliases.sh` instala/atualiza tudo (idempotente — 04/09)
+# Execução direta instala/atualiza tudo (idempotente — 04/09):
+#   bash setup-aliases.sh  |  bash -c "$(curl -fsSL <url>)"  |  curl ... | bash
 # Quando sourceado (apply-configs.sh / setup-archroid.sh), só define a função.
-if [[ "${BASH_SOURCE[0]}" == "$0" ]]; then
-    setup_aliases
-fi
+# Guard: BS vazio (bash -c/stdin) ou BS == $0 (arquivo) = execução direta.
+case "${BASH_SOURCE[0]}" in
+    ""|"$0") setup_aliases ;;
+esac
