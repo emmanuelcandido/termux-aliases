@@ -6,6 +6,12 @@ setup_aliases() {
     local BIN_DIR="${HOME}/.local/bin"
     mkdir -p "${BIN_DIR}"
 
+    # ── Pré-requisito: mosh (cliente) — auto-instala no Termux (04/09) ──
+    if command -v pkg >/dev/null 2>&1 && ! command -v mosh >/dev/null 2>&1; then
+        echo "[aliases] mosh ausente — instalando (pkg install mosh)..."
+        pkg install -y mosh
+    fi
+
     # ── Limpeza de obsoletos (versões antigas que saíram da lista) ──
     for _old in vps-ssh vps-ccbot ccbot ccbot-restart vps-ccbot-restart; do
         rm -f "${BIN_DIR}/${_old}" "${HOME}/${_old}"
