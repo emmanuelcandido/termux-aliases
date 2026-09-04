@@ -1,5 +1,6 @@
 #!/data/data/com.termux/files/usr/bin/bash
 # modules/setup-aliases.sh — Cria start-arch, stop-arch, uninstall-arch no ~
+# Espelhado automaticamente p/ github.com/emmanuelcandido/termux-aliases (04/09) — editar AQUI, nunca lá.
 
 setup_aliases() {
     local BIN_DIR="${HOME}/.local/bin"
