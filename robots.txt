@@ -1,0 +1,3 @@
+# Ferramenta pessoal — não indexar
+User-agent: *
+Disallow: /
