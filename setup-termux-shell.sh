@@ -11,7 +11,8 @@ setup_termux_shell() {
 
     # thefuck NAO entra: nao e pacote apt do Termux (vem do pip, capenga no Android 11+) — 04/09
     echo "==> [shell] Instalando pacotes: zsh starship eza bat ripgrep zoxide fzf vim"
-    pkg install -y zsh starship eza bat ripgrep zoxide fzf vim
+    # git incluso: o zinit (plugins do zsh) clona do GitHub — sem git, "Falha ao clonar" (05/09, tablet)
+    pkg install -y git zsh starship eza bat ripgrep zoxide fzf vim
 
     if ! command -v zsh >/dev/null 2>&1 || ! command -v starship >/dev/null 2>&1; then
         echo "  [ERRO] zsh/starship nao instalados — pkg install falhou? Rode 'pkg update' e tente de novo."
