@@ -6,8 +6,17 @@
 # Uso: bash -c "$(curl -fsSL https://raw.githubusercontent.com/emmanuelcandido/termux-aliases/main/setup-termux-shell.sh)"
 
 setup_termux_shell() {
-    echo "==> [shell] Instalando pacotes: zsh starship eza bat ripgrep zoxide fzf thefuck vim"
-    pkg install -y zsh starship eza bat ripgrep zoxide fzf thefuck vim
+    echo "==> [shell] Atualizando lista de pacotes"
+    pkg update -y >/dev/null 2>&1 || true
+
+    # thefuck NAO entra: nao e pacote apt do Termux (vem do pip, capenga no Android 11+) — 04/09
+    echo "==> [shell] Instalando pacotes: zsh starship eza bat ripgrep zoxide fzf vim"
+    pkg install -y zsh starship eza bat ripgrep zoxide fzf vim
+
+    if ! command -v zsh >/dev/null 2>&1 || ! command -v starship >/dev/null 2>&1; then
+        echo "  [ERRO] zsh/starship nao instalados — pkg install falhou? Rode 'pkg update' e tente de novo."
+        return 1
+    fi
 
     mkdir -p ~/.termux ~/.config
 
@@ -240,7 +249,7 @@ STARSHIPEOF
         termux-reload-settings 2>/dev/null || true
     fi
 
-    if [ -d /data/data/com.termux ]; then
+    if [ -d /data/data/com.termux ] && [ -x /data/data/com.termux/files/usr/bin/zsh ]; then
         echo "==> [shell] Trocando shell padrão para zsh (chsh -s zsh)"
         chsh -s zsh
         echo "  Pronto! Abra uma NOVA sessão do Termux (a atual continua bash)."
