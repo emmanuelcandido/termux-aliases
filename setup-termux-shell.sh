@@ -142,88 +142,154 @@ ZSHRCEOF
 
     echo "==> [shell] ~/.config/starship.toml (Nord Powerline, do ArchDroid)"
     cat > ~/.config/starship.toml <<'STARSHIPEOF'
-# Starship — Nord powerline (Termux, 04/09)
-# ESTRUTURA do preset oficial pastel-powerline (separadores no format raiz, cadeia
-# fg/bg entre modulos) — cores Nord. Sem [battery]/[docker]/[kubernetes]: battery e
-# feature opcional do build (Termux compila sem -> 'Unknown key').
-
-add_newline = false
-
+# Starship — tema Nord de habutaso/starship-nord-theme (04/09, pedido CEO)
+# Fonte: https://github.com/habutaso/starship-nord-theme/blob/main/starship.toml
+# Estrutura do preset oficial pastel-powerline com cores Nord.
+# NOTA: sem [battery]/[docker]/[kubernetes] (battery e feature opcional do build).
 format = """
-[](fg:#5E81AC)\
+[](#B48EAD)\
+$os\
 $username\
-[](fg:#5E81AC bg:#81A1C1)\
+[](bg:#BF616A fg:#B48EAD)\
 $directory\
-[](fg:#81A1C1 bg:#88C0D0)\
+[](fg:#BF616A bg:#D08770)\
 $git_branch\
 $git_status\
-[](fg:#88C0D0 bg:#4C566A)\
+[](fg:#D08770 bg:#81A1C1)\
+$c\
+$elixir\
+$elm\
+$golang\
+$gradle\
+$haskell\
+$java\
+$julia\
+$nodejs\
+$nim\
+$rust\
+$scala\
+[](fg:#81A1C1 bg:#8FBCBB)\
+$docker_context\
+[](fg:#8FBCBB bg:#5E81AC)\
 $time\
-[ ](fg:#4C566A)\
-$line_break\
-$character"""
+[ ](fg:#5E81AC)\
+"""
 
+# Disable the blank line at the start of the prompt
+# add_newline = false
+
+# You can also replace your username with a neat symbol like   or disable this
+# and use the os module below
 [username]
 show_always = true
-style_user = "bg:#5E81AC fg:#2E3440"
-style_root = "bg:#5E81AC fg:#2E3440"
-format = "[ $user ]($style)"
+style_user = "bg:#B48EAD"
+style_root = "bg:#B48EAD"
+format = '[$user ]($style)'
+disabled = false
 
+# An alternative to the username module which displays a symbol that
+# represents the current operating system
 [os]
-disabled = true
+style = "bg:#B48EAD"
+disabled = true # Disabled by default
 
 [directory]
-style = "bg:#81A1C1 fg:#2E3440"
+style = "bg:#BF616A"
 format = "[ $path ]($style)"
 truncation_length = 3
 truncation_symbol = "…/"
 
+# Here is how you can shorten some long paths by text replacement
+# similar to mapped_locations in Oh My Posh:
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+# Keep in mind that the order matters. For example:
+# "Important Documents" = " 󰈙 "
+# will not be replaced, because "Documents" was already substituted before.
+# So either put "Important Documents" before "Documents" or use the substituted version:
+# "Important 󰈙 " = " 󰈙 "
+
+[c]
+symbol = " "
+style = "bg:#81A1C1"
+format = '[ $symbol ($version) ]($style)'
+
+[docker_context]
+symbol = " "
+style = "bg:#8FBCBB"
+format = '[ $symbol $context ]($style)'
+
+[elixir]
+symbol = " "
+style = "bg:#81A1C1"
+format = '[ $symbol ($version) ]($style)'
+
+[elm]
+symbol = " "
+style = "bg:#81A1C1"
+format = '[ $symbol ($version) ]($style)'
+
 [git_branch]
-style = "bg:#88C0D0 fg:#2E3440"
-format = "[ $branch ]($style)"
-only_attached = true
+symbol = ""
+style = "bg:#D08770"
+format = '[ $symbol $branch ]($style)'
 
 [git_status]
-style = "bg:#88C0D0 fg:#2E3440"
-format = "[$all_status$ahead_behind]($style)"
-conflicted = "="
-staged = "+"
-modified = "!"
-deleted = "✗"
-renamed = "→"
-untracked = "?"
-ahead = " ↑"
-behind = " ↓"
-diverged = " ⇕"
+style = "bg:#D08770"
+format = '[$all_status$ahead_behind ]($style)'
+
+[golang]
+symbol = " "
+style = "bg:#81A1C1"
+format = '[ $symbol ($version) ]($style)'
+
+[gradle]
+style = "bg:#81A1C1"
+format = '[ $symbol ($version) ]($style)'
+
+[haskell]
+symbol = " "
+style = "bg:#81A1C1"
+format = '[ $symbol ($version) ]($style)'
+
+[java]
+symbol = " "
+style = "bg:#81A1C1"
+format = '[ $symbol ($version) ]($style)'
+
+[julia]
+symbol = " "
+style = "bg:#81A1C1"
+format = '[ $symbol ($version) ]($style)'
+
+[nodejs]
+symbol = ""
+style = "bg:#81A1C1"
+format = '[ $symbol ($version) ]($style)'
+
+[nim]
+symbol = "󰆥 "
+style = "bg:#81A1C1"
+format = '[ $symbol ($version) ]($style)'
+
+[rust]
+symbol = ""
+style = "bg:#81A1C1"
+format = '[ $symbol ($version) ]($style)'
+
+[scala]
+symbol = " "
+style = "bg:#81A1C1"
+format = '[ $symbol ($version) ]($style)'
 
 [time]
 disabled = false
-style = "bg:#4C566A fg:#D8DEE9"
-format = "[ $time ]($style)"
-time_format = "%H:%M"
-
-[character]
-success_symbol = "[❯](bold #A3BE8C)"
-error_symbol = "[❯](bold #BF616A)"
-format = "$symbol "
-
-[hostname]
-disabled = true
-
-[cmd_duration]
-disabled = true
-
-[python]
-disabled = true
-
-[nodejs]
-disabled = true
-
-[rust]
-disabled = true
-
-[golang]
-disabled = true
+time_format = "%R" # Hour:Minute Format
+style = "bg:#5E81AC"
+format = '[ ♥ $time ]($style)'
 STARSHIPEOF
 
     if command -v termux-reload-settings >/dev/null 2>&1; then
