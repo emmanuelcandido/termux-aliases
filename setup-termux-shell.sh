@@ -20,6 +20,11 @@ setup_termux_shell() {
 
     mkdir -p ~/.termux ~/.config
 
+    # Backup das configs existentes antes de sobrescrever (04/09 — CEO perdeu configs)
+    _ts="$(date +%Y%m%d-%H%M%S)"
+    [ -f ~/.zshrc ] && cp ~/.zshrc "${HOME}/.zshrc.pre-termux-${_ts}" && echo "  backup: ~/.zshrc.pre-termux-${_ts}"
+    [ -f ~/.config/starship.toml ] && cp ~/.config/starship.toml "${HOME}/.config/starship.toml.pre-termux-${_ts}" && echo "  backup: ~/.config/starship.toml.pre-termux-${_ts}"
+
     echo "==> [shell] Fonte: JetBrainsMono Nerd Font (Mono, ~2.4MB)"
     curl -fsSL "https://raw.githubusercontent.com/ryanoasis/nerd-fonts/master/patched-fonts/JetBrainsMono/NoLigatures/JetBrainsMonoNLNerdFontMono-Regular.ttf" -o ~/.termux/font.ttf \
         || echo "  [aviso] falha ao baixar a fonte — ícones/powerline do starship podem quebrar"
@@ -52,6 +57,9 @@ COLORSEOF
     cat > ~/.zshrc <<'ZSHRCEOF'
 # ── Zsh config — Termux nativo (edição 04/09, do ArchDroid sem proot) ──
 # Fonte: https://github.com/emmanuelcandido/dotfiles (arch-on-android/configs/zsh/zshrc)
+
+# ── PATH: garantir ~/.local/bin (bins vps-*) — /etc/profile do Termux e bash-only ──
+export PATH="${HOME}/.local/bin:${PATH}"
 
 # ── History ──
 HISTSIZE=50000
