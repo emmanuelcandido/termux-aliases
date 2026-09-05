@@ -25,11 +25,10 @@ $python\
 $conda\
 [](fg:sapphire bg:lavender)\
 $cmd_duration\
-$fill\
 $time\
 [ ](fg:lavender)\
 $line_break\
-[╰╴](fg:#D8DEE9)[❯](bold #A3BE8C)"""
+[╰╴](fg:#D8DEE9)[❯](bold #A3BE8C) """
 
 palette = 'catppuccin_mocha'
 
