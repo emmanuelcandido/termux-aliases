@@ -64,6 +64,11 @@ setup_linux_shell() {
 # ── PATH: garantir ~/.local/bin (starship via script oficial, bins locais) ──
 export PATH="${HOME}/.local/bin:${PATH}"
 
+# ── 05/09: login em \$HOME cai no repo LifeOS (se existir nesta maquina) ──
+if [[ "$PWD" == "$HOME" && -d /root/lifeos ]]; then
+    cd /root/lifeos
+fi
+
 # ── History ──
 HISTSIZE=50000
 SAVEHIST=50000
