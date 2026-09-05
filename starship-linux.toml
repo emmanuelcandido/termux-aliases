@@ -20,7 +20,7 @@ $java\
 $kotlin\
 $haskell\
 $python\
-[ ](fg:green)\
+[](fg:green)\
 $fill\
 [](fg:lavender)\
 $cmd_duration\

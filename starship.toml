@@ -10,8 +10,17 @@ $directory\
 [](bg:yellow fg:peach)\
 $git_branch\
 $git_status\
-[](fg:yellow)\
-$fill\
+$c\
+$rust\
+$golang\
+$nodejs\
+$bun\
+$php\
+$java\
+$kotlin\
+$haskell\
+$python\
+[](fg:green)\
 $fill\
 [](fg:lavender)\
 $cmd_duration\
@@ -79,52 +88,52 @@ format = '[[($all_status$ahead_behind )](fg:crust bg:yellow)]($style)'
 [nodejs]
 symbol = ""
 style = "bg:green"
-format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
+format = '[](fg:yellow bg:green)[ $symbol( $version) ](fg:crust bg:green)'
 
 [bun]
 symbol = ""
 style = "bg:green"
-format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
+format = '[](fg:yellow bg:green)[ $symbol( $version) ](fg:crust bg:green)'
 
 [c]
 symbol = " "
 style = "bg:green"
-format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
+format = '[](fg:yellow bg:green)[ $symbol( $version) ](fg:crust bg:green)'
 
 [rust]
 symbol = ""
 style = "bg:green"
-format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
+format = '[](fg:yellow bg:green)[ $symbol( $version) ](fg:crust bg:green)'
 
 [golang]
 symbol = ""
 style = "bg:green"
-format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
+format = '[](fg:yellow bg:green)[ $symbol( $version) ](fg:crust bg:green)'
 
 [php]
 symbol = ""
 style = "bg:green"
-format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
+format = '[](fg:yellow bg:green)[ $symbol( $version) ](fg:crust bg:green)'
 
 [java]
 symbol = " "
 style = "bg:green"
-format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
+format = '[](fg:green)[ $symbol( $version) ](fg:crust bg:green)[](fg:green)'
 
 [kotlin]
 symbol = ""
 style = "bg:green"
-format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
+format = '[](fg:yellow bg:green)[ $symbol( $version) ](fg:crust bg:green)'
 
 [haskell]
 symbol = ""
 style = "bg:green"
-format = '[[ $symbol( $version) ](fg:crust bg:green)]($style)'
+format = '[](fg:yellow bg:green)[ $symbol( $version) ](fg:crust bg:green)'
 
 [python]
 symbol = ""
 style = "bg:green"
-format = '[[ $symbol( $version)(\(#$virtualenv\)) ](fg:crust bg:green)]($style)'
+format = '[](fg:green)[ $symbol( $version) ](fg:crust bg:green)[](fg:green)'
 
 [docker_context]
 symbol = ""
