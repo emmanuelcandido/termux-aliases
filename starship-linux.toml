@@ -10,9 +10,7 @@ $directory\
 [](bg:yellow fg:peach)\
 $git_branch\
 $git_status\
-[](fg:yellow)\
-$fill\
-$fill\
+[ ](fg:yellow)\
 $c\
 $rust\
 $golang\
@@ -23,12 +21,13 @@ $java\
 $kotlin\
 $haskell\
 $python\
+$fill\
 [](fg:lavender)\
 $cmd_duration\
 $time\
 [ ](fg:lavender)\
 $line_break\
-[╰╴](fg:#D8DEE9)[❯](bold #A3BE8C) """
+[╰╴](fg:#D8DEE9)$character """
 
 palette = 'catppuccin_mocha'
 
@@ -155,8 +154,8 @@ format = '[[  $time ](fg:text bg:lavender)]($style)'
 
 [character]
 disabled = false
-success_symbol = '[❯](bold fg:green)'
-error_symbol = '[❯](bold fg:red)'
+success_symbol = '[❯](bold #A3BE8C)'
+error_symbol = '[❯](bold #BF616A)'
 vimcmd_symbol = '[❮](bold fg:green)'
 vimcmd_replace_one_symbol = '[❮](bold fg:lavender)'
 vimcmd_replace_symbol = '[❮](bold fg:lavender)'
