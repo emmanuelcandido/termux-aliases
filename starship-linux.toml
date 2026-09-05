@@ -118,7 +118,7 @@ format = '[](fg:yellow bg:green)[ $symbol( $version) ](fg:crust bg:green)'
 [java]
 symbol = " "
 style = "bg:green"
-format = '[](fg:green)[ $symbol( $version) ](fg:crust bg:green)[](fg:green)'
+format = '[](fg:yellow bg:green)[ $symbol( $version) ](fg:crust bg:green)'
 
 [kotlin]
 symbol = ""
@@ -133,7 +133,7 @@ format = '[](fg:yellow bg:green)[ $symbol( $version) ](fg:crust bg:green)'
 [python]
 symbol = ""
 style = "bg:green"
-format = '[](fg:green)[ $symbol( $version) ](fg:crust bg:green)[](fg:green)'
+format = '[](fg:yellow bg:green)[ $symbol( $version)(\(#$virtualenv\)) ](fg:crust bg:green)'
 
 [docker_context]
 symbol = ""
