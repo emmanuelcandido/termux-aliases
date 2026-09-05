@@ -210,6 +210,8 @@ error_symbol = "[❯](bold #BF616A)"
 format = "$symbol "
 
 # ═══ Desligados (ruído no celular) ═══
+# NOTA: [battery]/[docker]/[kubernetes] NAO sao citados — battery e feature opcional
+# do build (Termux compila sem -> 'Unknown key'; removidos 04/09)
 [os]
 disabled = true
 
@@ -230,15 +232,6 @@ disabled = true
 
 [golang]
 disabled = true
-
-[battery]
-disabled = true
-
-[docker]
-disabled = true
-
-[kubernetes]
-disabled = true
 STARSHIPEOF
 
     if command -v termux-reload-settings >/dev/null 2>&1; then
@@ -251,6 +244,11 @@ STARSHIPEOF
         echo "  Pronto! Abra uma NOVA sessão do Termux (a atual continua bash)."
     else
         echo "  (fora do Termux — chsh pulado)"
+    fi
+
+    # Welcome to Termux (motd) — remover (04/09, pedido CEO)
+    if [ -d /data/data/com.termux ]; then
+        rm -f /data/data/com.termux/files/usr/etc/motd && echo "  Welcome to Termux (motd) removido"
     fi
 
     echo "==> [shell] Concluído: zsh + Starship Nord + tools. Fonte/cores aplicadas em nova sessão."
