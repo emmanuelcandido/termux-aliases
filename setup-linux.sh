@@ -25,7 +25,7 @@ setup_linux_shell() {
             if ! command -v eza >/dev/null 2>&1; then
                 echo "  -> baixando eza (release GitHub)"
                 curl -fsSL -o /tmp/eza.tar.gz "https://github.com/eza-community/eza/releases/latest/download/eza_x86_64-unknown-linux-gnu.tar.gz" \
-                    && tar xzf /tmp/eza.tar.gz -C /usr/local/bin eza && rm -f /tmp/eza.tar.gz
+                    && tar xzf /tmp/eza.tar.gz -C /usr/local/bin ./eza && rm -f /tmp/eza.tar.gz
             fi
             if ! command -v starship >/dev/null 2>&1; then
                 echo "  -> instalando starship (script oficial)"
