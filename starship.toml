@@ -10,7 +10,7 @@ $directory\
 [](bg:yellow fg:peach)\
 $git_branch\
 $git_status\
-[ ](fg:yellow)\
+[](fg:yellow)\
 $fill\
 $fill\
 [](fg:lavender)\
