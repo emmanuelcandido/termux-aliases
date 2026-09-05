@@ -1,14 +1,16 @@
 # termux-aliases
 
-Instalador dos aliases de acesso à VPS (LifeOS) no Termux do Android.
+Instaladores do Termux do Android (acesso à VPS LifeOS + shell Nord).
 
-> **Fonte:** repo privado `dotfiles` (`arch-on-android/modules/setup-aliases.sh`) — este arquivo é um **espelho automático** (GitHub Action no repo privado). Não editar aqui; edite no privado.
+> **Fonte:** repo privado `dotfiles` (`arch-on-android/modules/`) — estes arquivos são **espelho automático** (GitHub Action no repo privado). Não editar aqui; edite no privado.
 
-## Instalar / atualizar (no Termux)
+## 1. Aliases de acesso à VPS
 
 ```bash
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/emmanuelcandido/termux-aliases/main/setup-aliases.sh)"
 ```
+
+Instala o `mosh` se ausente e cria em `~/.local/bin`:
 
 Idempotente: limpa versões antigas e (re)instala tudo. Cria em `~/.local/bin`:
 
@@ -27,3 +29,16 @@ Idempotente: limpa versões antigas e (re)instala tudo. Cria em `~/.local/bin`:
 | `ccgram-restart` | Reinicia o ccgram |
 
 **Pré-requisito:** `mosh` instalado no Termux (`pkg install mosh`). A chave do OpenRouter vive em `~/.hermes/.env` na VPS (nada de segredo neste repo).
+
+## 2. Shell — Zsh + Starship Nord (04/09)
+
+```bash
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/emmanuelcandido/termux-aliases/main/setup-termux-shell.sh)"
+```
+
+Instala `zsh starship eza bat ripgrep zoxide fzf thefuck vim`, aplica:
+- Fonte **JetBrains Mono Nerd Font** (`~/.termux/font.ttf`)
+- Cores **Nord** (`~/.termux/colors.properties`)
+- `~/.zshrc` (edição Termux do ArchDroid — zinit + plugins, sem bloco proot)
+- `~/.config/starship.toml` (Nord Powerline)
+- **Troca o shell padrão para zsh** (`chsh -s zsh`) — abra uma **nova sessão** do Termux para valer
