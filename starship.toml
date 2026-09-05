@@ -24,6 +24,9 @@ $python\
 [](fg:green bg:sapphire)\
 $conda\
 [](fg:sapphire bg:lavender)\
+$fill\
+$fill\
+[](fg:lavender)\
 $cmd_duration\
 $time\
 [ ](fg:lavender)\
