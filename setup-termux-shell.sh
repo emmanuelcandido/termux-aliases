@@ -142,45 +142,50 @@ ZSHRCEOF
 
     echo "==> [shell] ~/.config/starship.toml (Nord Powerline, do ArchDroid)"
     cat > ~/.config/starship.toml <<'STARSHIPEOF'
-# Starship — Nord Pills (Termux, 04/09)
-# Capsulas com pontas redondas (Powerline Extra da Nerd Font):
-#   E0B4 = ponta esquerda  ·  E0B6 = ponta direita
-# Validado sem warnings no starship 1.25.1/1.26 (username usa style_user, nao style)
+# Starship — Nord powerline (Termux, 04/09)
+# ESTRUTURA do preset oficial pastel-powerline (separadores no format raiz, cadeia
+# fg/bg entre modulos) — cores Nord. Sem [battery]/[docker]/[kubernetes]: battery e
+# feature opcional do build (Termux compila sem -> 'Unknown key').
 
 add_newline = false
 
-format = """\
+format = """
+[](fg:#5E81AC)\
 $username\
+[](fg:#5E81AC bg:#81A1C1)\
 $directory\
+[](fg:#81A1C1 bg:#88C0D0)\
 $git_branch\
 $git_status\
-$fill\
+[](fg:#88C0D0 bg:#4C566A)\
 $time\
+[ ](fg:#4C566A)\
 $line_break\
 $character"""
 
-# ═══ Linha 1 — Pílulas ═══
-
 [username]
-style_user = ""
-style_root = ""
-format = "[](fg:#5E81AC)[ $user ](bg:#5E81AC fg:#2E3440)[](fg:#5E81AC) "
+show_always = true
+style_user = "bg:#5E81AC fg:#2E3440"
+style_root = "bg:#5E81AC fg:#2E3440"
+format = "[ $user ]($style)"
+
+[os]
+disabled = true
 
 [directory]
-style = ""
-format = "[](fg:#81A1C1)[  $path  ](bg:#81A1C1 fg:#2E3440)[](fg:#81A1C1) "
+style = "bg:#81A1C1 fg:#2E3440"
+format = "[ $path ]($style)"
 truncation_length = 3
 truncation_symbol = "…/"
-read_only = " "
 
 [git_branch]
-style = ""
-format = "[](fg:#88C0D0)[  $branch  ](bg:#88C0D0 fg:#2E3440)[](fg:#88C0D0)"
+style = "bg:#88C0D0 fg:#2E3440"
+format = "[ $branch ]($style)"
 only_attached = true
 
 [git_status]
-style = "fg:#88C0D0"
-format = "[$all_status$ahead_behind](fg:#88C0D0)"
+style = "bg:#88C0D0 fg:#2E3440"
+format = "[$all_status$ahead_behind]($style)"
 conflicted = "="
 staged = "+"
 modified = "!"
@@ -191,29 +196,16 @@ ahead = " ↑"
 behind = " ↓"
 diverged = " ⇕"
 
-# ═══ Linha 1 — Direita ═══
-
-[fill]
-symbol = " "
-
 [time]
 disabled = false
-style = "fg:#4C566A"
-format = "[$time](fg:#4C566A bold)"
+style = "bg:#4C566A fg:#D8DEE9"
+format = "[ $time ]($style)"
 time_format = "%H:%M"
-
-# ═══ Linha 2 — Cursor ═══
 
 [character]
 success_symbol = "[❯](bold #A3BE8C)"
 error_symbol = "[❯](bold #BF616A)"
 format = "$symbol "
-
-# ═══ Desligados (ruído no celular) ═══
-# NOTA: [battery]/[docker]/[kubernetes] NAO sao citados — battery e feature opcional
-# do build (Termux compila sem -> 'Unknown key'; removidos 04/09)
-[os]
-disabled = true
 
 [hostname]
 disabled = true
