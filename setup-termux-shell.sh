@@ -142,94 +142,82 @@ ZSHRCEOF
 
     echo "==> [shell] ~/.config/starship.toml (Nord Powerline, do ArchDroid)"
     cat > ~/.config/starship.toml <<'STARSHIPEOF'
-# Starship config — Nord (Powerline) — Termux (04/09, do ArchDroid)
-# Requer fonte Nerd (JetBrains Mono Nerd Font) para os glifos  e 
+# Starship — Nord Pills (Termux, 04/09)
+# Capsulas com pontas redondas (Powerline Extra da Nerd Font):
+#   E0B4 = ponta esquerda  ·  E0B6 = ponta direita
+# Validado sem warnings no starship 1.25.1/1.26 (username usa style_user, nao style)
 
 add_newline = false
 
-format = """
-[](bg:inverted fg:#5E81AC)\
-$os\
+format = """\
 $username\
-$hostname\
-[](fg:#5E81AC bg:#81A1C1)\
 $directory\
-[](fg:#81A1C1 bg:#88C0D0)\
 $git_branch\
 $git_status\
-[](fg:#88C0D0)\
 $fill\
-[](fg:#4C566A)\
 $time\
-[](fg:#4C566A bg:#3B4252)\
-$cmd_duration\
-[](fg:#3B4252)\
 $line_break\
 $character"""
 
-[os]
-disabled = false
-style = "bg:#5E81AC fg:#2E3440"
-format = "[ $symbol ](bg:#5E81AC fg:#2E3440)"
+# ═══ Linha 1 — Pílulas ═══
 
 [username]
-show_always = true
-style_user = "bg:#5E81AC fg:#2E3440"
-style_root = "bg:#5E81AC fg:#2E3440"
-format = "[$user](bg:#5E81AC fg:#2E3440)"
-
-[hostname]
-disabled = false
-ssh_only = false
-style = "bg:#5E81AC fg:#2E3440"
-format = "[@$hostname](bg:#5E81AC fg:#2E3440)"
-ssh_symbol = "󰢩"
-trim_at = "."
+style_user = ""
+style_root = ""
+format = "[](fg:#5E81AC)[ $user ](bg:#5E81AC fg:#2E3440)[](fg:#5E81AC) "
 
 [directory]
-style = "bg:#81A1C1 fg:#2E3440"
-format = "[ 󰉋 $path ](bg:#81A1C1 fg:#2E3440)"
+style = ""
+format = "[](fg:#81A1C1)[  $path  ](bg:#81A1C1 fg:#2E3440)[](fg:#81A1C1) "
 truncation_length = 3
 truncation_symbol = "…/"
+read_only = " "
 
 [git_branch]
-style = "bg:#88C0D0 fg:#2E3440"
-format = "[ 󰘬 $branch ](bg:#88C0D0 fg:#2E3440)"
+style = ""
+format = "[](fg:#88C0D0)[  $branch  ](bg:#88C0D0 fg:#2E3440)[](fg:#88C0D0)"
 only_attached = true
 
 [git_status]
-style = "bg:#88C0D0 fg:#2E3440"
-format = "[$all_status$ahead_behind](bg:#88C0D0 fg:#2E3440)"
-conflicted = "🏳"
-staged = "[++](green)"
-modified = "[✎](yellow)"
-stashed = "[●](purple)"
-deleted = "[✗](red)"
-renamed = "[→](blue)"
-untracked = "[?](white)"
+style = "fg:#88C0D0"
+format = "[$all_status$ahead_behind](fg:#88C0D0)"
+conflicted = "="
+staged = "+"
+modified = "!"
+deleted = "✗"
+renamed = "→"
+untracked = "?"
 ahead = " ↑"
 behind = " ↓"
 diverged = " ⇕"
+
+# ═══ Linha 1 — Direita ═══
 
 [fill]
 symbol = " "
 
 [time]
 disabled = false
-style = "bg:#4C566A fg:#D8DEE9"
-format = "[ $time ](bg:#4C566A fg:#D8DEE9)"
+style = "fg:#4C566A"
+format = "[$time](fg:#4C566A bold)"
 time_format = "%H:%M"
 
-[cmd_duration]
-style = "bg:#3B4252 fg:#88C0D0"
-format = "[ 󰔚 $duration ](bg:#3B4252 fg:#88C0D0)"
-min_time = 2000
-show_milliseconds = false
+# ═══ Linha 2 — Cursor ═══
 
 [character]
 success_symbol = "[❯](bold #A3BE8C)"
 error_symbol = "[❯](bold #BF616A)"
 format = "$symbol "
+
+# ═══ Desligados (ruído no celular) ═══
+[os]
+disabled = true
+
+[hostname]
+disabled = true
+
+[cmd_duration]
+disabled = true
 
 [python]
 disabled = true
